@@ -15,8 +15,14 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShells.default = pkgs.mkShell { packages = [ pkgs.bashInteractive ]; 
-        buildInputs = with pkgs; [ R rPackages.languageserver rPackages.lintr];
+        devShells.default = pkgs.mkShell {
+          packages = [ pkgs.bashInteractive ];
+          buildInputs = with pkgs; [
+            R
+            rPackages.languageserver
+            rPackages.formatR
+            rPackages.lintr
+          ];
         };
       }
     );
