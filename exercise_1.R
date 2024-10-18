@@ -8,12 +8,12 @@
 
 # 1e
 
-help(q)
 # quits the R session
+help(q)
 
-help(history)
 # returns the history (used commands)
 # most important arguments are max.show and pattern
+help(history)
 
 help(savehistory)
 # saves the history to a file
@@ -36,9 +36,7 @@ logical_var <- TRUE
 typeof(logical_var)
 
 # 3
-# A variable holds only one value
-# a vector can hold many values
-# even a single value can be considered a vector
+# everything is a vector
 
 # 4 set a value in a vector
 numeric_vector <- c(1.1, 1.2, 1.3)
@@ -48,6 +46,7 @@ numeric_vector
 # 5 append to a vector
 numeric_vector <- c(1.1, 1.2, 1.3)
 numeric_vector <- c(numeric_vector, 1.4)
+numeric_vector <- append(numeric_vector, 5)
 numeric_vector
 
 # 6
