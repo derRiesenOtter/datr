@@ -58,8 +58,6 @@ for (entry in seq_along(vec_of_sums)) {
 mean_all_values <- mean(as.vector(as.matrix(plant_heights)))
 sd_all_values <- sd(as.vector(as.matrix(plant_heights)))
 
-Filter(plant_heights > mean_all_values + 2 * sd_all_values, plant_heights)
-
 outlier_function <- function(i) {
   Filter(function(x) (x > mean_all_values + 2 * sd_all_values | x < mean_all_values - 2 * sd_all_values), plant_heights[[i]])
 }

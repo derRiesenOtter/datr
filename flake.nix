@@ -19,6 +19,7 @@
           packages = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
             R
+            rPackages.ggplot2
             rPackages.languageserver
             rPackages.formatR
             rPackages.lintr
