@@ -15,6 +15,10 @@ two_dice_sum <- apply(two_dice, 1, sum)
 
 three_dice_sum <- apply(three_dice, 1, sum)
 
+table(two_dice_sum)
+
+table(three_dice_sum)
+
 # 4
 calc_breaks <- function(x) {
   (min(x) - 0.5):(max(x) + 1)
