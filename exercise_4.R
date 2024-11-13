@@ -1,85 +1,45 @@
 # 1
-one_hundred <- rnorm(100, 5, 1)
-two_hundred <- rnorm(100, 4, 1)
-three_hundred <- rnorm(100, 3, 1)
-four_hundred <- rnorm(100, 6, 1)
-five_hundred <- rnorm(100, 7, 1)
-six_hundred <- rnorm(100, 5, 1)
-seven_hundred <- rnorm(100, 5, 2)
-eight_hundred <- rnorm(100, 4, 2)
-nine_hundred <- rnorm(100, 3, 2)
-ten_hundred <- rnorm(100, 7, 2)
-
-one_thousand <- rnorm(1000, 5, 1)
+ten <- rnorm(10, 5, 1)
+hundred <- rnorm(100, 7, 2)
+thousand <- rnorm(1000, 5, 1)
 
 # 1a
-hist_one_hundred <- hist(one_hundred, plot = FALSE)
-hist_two_hundred <- hist(two_hundred, plot = FALSE)
-hist_three_hundred <- hist(three_hundred, plot = FALSE)
-hist_four_hundred <- hist(four_hundred, plot = FALSE)
-hist_five_hundred <- hist(five_hundred, plot = FALSE)
-hist_six_hundred <- hist(six_hundred, plot = FALSE)
-hist_seven_hundred <- hist(seven_hundred, plot = FALSE)
-hist_eight_hundred <- hist(eight_hundred, plot = FALSE)
-hist_nine_hundred <- hist(nine_hundred, plot = FALSE)
-hist_ten_hundred <- hist(ten_hundred, plot = FALSE)
-
-hist_one_thousand <- hist(one_hundred, plot = FALSE)
-hist_one_thousand
+ten_hist <- hist(ten, plot = FALSE)
+hundred_hist <- hist(hundred, plot = FALSE)
+thousand_hist <- hist(thousand, plot = FALSE)
+thousand_hist
 
 # the breaks, the counts for each bin, the middle of each bin,
 # the name, equidist (boole), class
 
 # 1b
-plot(hist_one_hundred)
+plot(ten_hist)
 
-plot(hist_two_hundred)
+plot(hundred_hist)
 
-plot(hist_three_hundred)
-
-plot(hist_four_hundred)
-
-plot(hist_five_hundred)
-
-plot(hist_six_hundred)
-
-plot(hist_seven_hundred)
-
-plot(hist_eight_hundred)
-
-plot(hist_nine_hundred)
-
-plot(hist_ten_hundred)
-
-plot(hist_one_thousand)
+plot(thousand_hist)
 
 # some better some worse
 
 # 1c
-hist(one_hundred, breaks = 20)
+hist(hundred, breaks = 10)
 
-hist(one_thousand, breaks = 50)
+hist(thousand, breaks = 50)
 
 # 1d
-density(one_hundred)
+density(hundred)
 
-plot(density(one_hundred))
+plot(density(hundred))
 
-plot(density(two_hundred))
+plot(density(thousand))
 
-plot(density(three_hundred))
+plot(density(thousand, kernel = "cosine"))
 
-plot(density(four_hundred))
+plot(density(thousand, kernel = "rectangular"))
 
-plot(density(one_thousand))
+plot(density(thousand, kernel = "triangular"))
 
-plot(density(one_thousand, kernel = "cosine"))
-
-plot(density(one_thousand, kernel = "rectangular"))
-
-plot(density(one_thousand, kernel = "triangular"))
-
-plot(density(one_thousand, bw = "SJ"))
+plot(density(thousand, bw = "SJ"))
 
 # 2
 
@@ -107,18 +67,25 @@ dev.off()
 # but there are too few samples
 
 # 2a
-all_combinations <- expand.grid(1:6, 1:6, 1:6, 1:6, 1:6)
+dice <- 1:6
+all_combinations <- expand.grid(
+  dice_1 = dice, dice_2 = dice,
+  dice_3 = dice, dice_4 = dice, dice_5 = dice
+)
 
 # 2b
 mean <- apply(all_combinations, 1, mean)
-all_combinations_with_mean <- cbind(all_combinations, mean)
+all_combinations$mean <- mean
+head(all_combinations)
 
 # 2c
-di <- function(x) {
+abs_diff <- function(x) {
   abs(x[[1]] - x[[2]])
 }
 
-all_differences_of_two_means <- combn(all_combinations_with_mean[["mean"]], 2, FUN = di)
+all_differences_of_two_means <- combn(all_combinations[["mean"]], 2, FUN = abs_diff)
+
+head(all_differences_of_two_means)
 
 # 2d
 hist(all_differences_of_two_means, breaks = 100)

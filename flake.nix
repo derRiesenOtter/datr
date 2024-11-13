@@ -23,6 +23,7 @@
             rPackages.languageserver
             rPackages.formatR
             rPackages.lintr
+            rPackages.extraDistr
           ];
         };
       }

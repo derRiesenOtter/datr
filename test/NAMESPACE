@@ -1,0 +1,6 @@
+export("control_expression", "control_expression_normalized",
+       "control_expression_sd", "drought_expression",
+       "drought_expression_normalized",
+       "drought_expression_normalized_sd",
+       "experiment_linear_regression",
+       "experiment_linear_regression_norm", "res")
